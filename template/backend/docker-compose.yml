@@ -27,8 +27,19 @@ services:
       POSTGRES_USER: developer
       POSTGRES_PASSWORD: ev@luAt10n
     ports:
-      - "5432"
+      - "5432:5432"
     restart: unless-stopped
+
+  pgadmin4:
+    image: elestio/pgadmin:latest
+    container_name: pgadmin_ev
+    restart: always
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "5050:80"
 
   ambev.developerevaluation.nosql:
     container_name: ambev_developer_evaluation_nosql 
